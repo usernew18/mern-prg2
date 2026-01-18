@@ -4,13 +4,10 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-// Serve static HTML file
 app.use(express.static(path.join(__dirname)));
 
-// Parse POST data
 app.use(express.urlencoded({ extended: true }));
 
-// GET method
 app.get('/submit-get', (req, res) => {
   const { name, branch, semester } = req.query;
 
@@ -23,7 +20,6 @@ app.get('/submit-get', (req, res) => {
   `);
 });
 
-// POST method
 app.post('/submit-post', (req, res) => {
   const { name, branch, semester } = req.body;
 
@@ -36,7 +32,6 @@ app.post('/submit-post', (req, res) => {
   `);
 });
 
-// Start server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
